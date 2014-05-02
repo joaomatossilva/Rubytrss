@@ -1,0 +1,7 @@
+<h2>Popular</h2>
+
+<% @popular.first(15).each do |movie| %>
+    <% if movie %>
+        <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") if movie['poster_path'] %>
+    <% end %>
+<% end %>

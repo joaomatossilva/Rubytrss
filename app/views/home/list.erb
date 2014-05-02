@@ -1,0 +1,14 @@
+<h1>Movies List</h1>
+
+<section class="movies-list">
+<% @movies.each do |movie| %>
+    <article class="movie-item">
+      <h3><%= movie["MovieTitleClean"] %></h3>
+      <p><%= movie["MovieID"] %></p>
+      <p><%= movie["ImdbCode"] %></p>
+      <p><%= movie["TorrentUrl"] %></p>
+      <p><%= movie["TorrentHash"] %></p>
+      <img src="<%= movie["CoverImage"] %>" />
+    </article>
+<% end %>
+</section>
