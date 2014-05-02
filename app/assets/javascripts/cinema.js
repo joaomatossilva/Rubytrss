@@ -4,37 +4,27 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 */
 $(function() {
-    console.log("hey...")
     $(".tab-selector").each(function (index, item) {
-        console.log(item);
-        var targetElement = item.getAttribute("data-target");
-        console.log(targetElement);
-        /*
-        $("li", item).each(function (index2, itemLink) {
-            console.log(itemLink);
-            console.log("settings click")
-            itemLink.click(function () {
-                var address = $(this).getAttribute("data-source");
-                console.log(address);
-                $.ajax({
-                    url: address
-                }).done(function (data) {
-                    console.log("finished");
-                    $("#" + targetElement).html(data);
-                });
-            });
-        });
-        */
+        var $targetElement = $("#" + item.getAttribute("data-target"));
+        var $loadingElement = $("#" + item.getAttribute("data-loading"));
+        $targetElement.hide();
+        $loadingElement.hide();
 
         $("li", item).click(function () {
+            $("li", item).removeClass("active");
+            $(this).addClass("active");
             var address = this.getAttribute("data-source");
-            console.log(address);
+            $targetElement.hide();
+            $loadingElement.show();
             $.ajax({
                 url: address
             }).done(function (data) {
-                console.log("finished");
-                $("#" + targetElement).html(data);
+                console.log("finished loading " + address);
+                $targetElement.html(data);
+                $targetElement.show();
+                $loadingElement.hide();
             });
         });
+        $("li", item).first().click();
     });
 });

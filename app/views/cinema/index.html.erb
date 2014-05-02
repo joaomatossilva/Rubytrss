@@ -1,9 +1,12 @@
 <h1>Cinema</h1>
 
-<ul class="tab-selector" data-target="subsection">
-  <li data-source="<%= url_for :action => :now_playing %>">Now Playing</li>
-  <li data-source="<%= url_for :action => :popular %>">Popular</li>
-  <li data-source="<%= url_for :action => :top_rated %>">Top Rated</li>
+<ul class="tab-selector nav nav-tabs" data-target="subsection" data-loading="subsection-loading">
+  <li data-source="<%= url_for :action => :now_playing %>"><a href="#"  data-toggle="tab">Now Playing</a></li>
+  <li data-source="<%= url_for :action => :popular %>"><a href="#" data-toggle="tab">Popular</a></li>
+  <li data-source="<%= url_for :action => :top_rated %>" ><a href="#" data-toggle="tab">Top Rated</a></li>
 </ul>
 
+<div id="subsection-loading">
+  <span>Loading ...</span>
+</div>
 <div id="subsection"></div>
