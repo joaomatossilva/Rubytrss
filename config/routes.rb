@@ -1,5 +1,7 @@
 Rubytrss::Application.routes.draw do
 
+  get "releases/index"
+
   get "cinema/index"
 
   get "cinema/top_rated"
@@ -9,7 +11,7 @@ Rubytrss::Application.routes.draw do
   get "cinema/now_playing"
 
   match 'list' => 'home#list'
-  match 'list_help' => 'home#list_help'
+  match 'list_help' => 'releases#list_help'
 
   root :to => "home#index"
 
