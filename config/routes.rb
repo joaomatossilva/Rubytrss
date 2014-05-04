@@ -1,5 +1,7 @@
 Rubytrss::Application.routes.draw do
 
+  get "movies/show"
+
   get "releases/index"
 
   get "cinema/index"

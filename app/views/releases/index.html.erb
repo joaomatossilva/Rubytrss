@@ -8,10 +8,11 @@
           <img src="<%= movie["CoverImage"] %>" />
         </div>
         <div class="movie-info">
-          <p><%= movie["MovieYear"] %></p>
-          <p><%= movie["DateUploaded"] %></p>
-          <p><%= movie["Quality"] %></p>
-          <p><%= movie["Size"] %></p>
+          <p><span class="movie-info-title">Year</span> <%= movie["MovieYear"] %></p>
+          <p><span class="movie-info-title">Date:</span> <%= movie["DateUploaded"] %></p>
+          <p><span class="movie-info-title">Quality:</span> <%= movie["Quality"] %></p>
+          <p><span class="movie-info-title">Size:</span> <%= movie["Size"] %></p>
+          <p><%= link_to "Details", :controller => :movies, :action => :show, :id => movie["ImdbCode"] %></p>
           <p><%= movie["MovieID"] %></p>
           <p><%= movie["ImdbCode"] %></p>
           <p><%= movie["TorrentUrl"] %></p>
