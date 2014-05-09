@@ -1,0 +1,35 @@
+<h1>Releases</h1>
+
+<section class="movies-list">
+  <% @movies.each do |movie| %>
+      <article class="movie-item">
+        <h3><%= movie["MovieTitleClean"] %></h3>
+        <div class="movie-poster">
+          <img src="<%= movie["CoverImage"] %>" />
+        </div>
+        <div class="movie-info">
+          <%= form_for :release, url: releases_path do |f| %>
+              <%= f.hidden_field :_id, :value => movie["TorrentHash"] %>
+              <%= f.hidden_field :name, :value => movie["MovieTitleClean"] %>
+              <%= f.hidden_field :url, :value => movie["TorrentUrl"] %>
+              <%= f.hidden_field :externalId, :value => movie["MovieID"] %>
+              <p><span class="movie-info-title">Year</span> <%= movie["MovieYear"] %></p>
+              <p><span class="movie-info-title">Date:</span> <%= movie["DateUploaded"] %></p>
+              <p><span class="movie-info-title">Quality:</span> <%= movie["Quality"] %></p>
+              <p><span class="movie-info-title">Size:</span> <%= movie["Size"] %></p>
+              <p><%= link_to "Details", :controller => :movies, :action => :show, :id => movie["ImdbCode"] %></p>
+              <% if !movie["Dowloaded"] %>
+                  <p>
+                    <%= f.submit %>
+                  </p>
+              <%end%>
+              <p><%= movie["MovieID"] %></p>
+              <p><%= movie["ImdbCode"] %></p>
+              <p><%= movie["TorrentUrl"] %></p>
+              <p><%= movie["TorrentHash"] %></p>
+
+          <% end %>
+        </div>
+      </article>
+  <% end %>
+</section>
