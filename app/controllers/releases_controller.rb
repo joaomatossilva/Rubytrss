@@ -2,16 +2,18 @@ class ReleasesController < ApplicationController
   def show
     moviesFeed = MoviesFeed.new()
     feed = moviesFeed.get_movies
-    @movies = feed['MovieList']
+    @movies = feed[:movies]
 
     hashes = @movies.map do |m|
-      m["TorrentHash"]
+      m.hash
     end
 
-    myReleases = Release.find(hashes)
+    myReleases = Release.all(:hash => hashes )
 
-    @movies.each do |m|
-      m["Dowloaded"] = myReleases.any? {|r| r._id == m["TorrentHash"]}
+    unless myReleases.nil?
+      @movies.each do |m|
+        m.downloaded = myReleases.any? {|r| r.hash == m.hash}
+      end
     end
   end
 
