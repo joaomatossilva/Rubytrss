@@ -2,6 +2,8 @@
 
 <% @now_playing.first(15).each do |movie| %>
     <% if movie %>
-        <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") if movie['poster_path'] %>
+        <a href="<%= url_for :controller => :movies, :action => :show, :id => movie['id'] %>">
+            <%= image_tag("#{@configuration.base_url}w154#{movie['poster_path']}") if movie['poster_path'] %>
+        </a>
     <% end %>
 <% end %>

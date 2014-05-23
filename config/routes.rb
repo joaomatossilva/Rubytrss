@@ -1,5 +1,7 @@
 Rubytrss::Application.routes.draw do
 
+  match 'feed.xml' => 'feed#index', :format => 'rss'
+
   get "movies/show"
 
   get "cinema/index"
