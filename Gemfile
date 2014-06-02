@@ -5,6 +5,12 @@ gem 'rails', '3.2.16'
 gem "mongo_mapper"
 gem 'bson_ext'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem "omniauth-google-oauth2"
+gem 'omniauth-google-apps'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

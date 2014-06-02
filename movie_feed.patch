@@ -1,0 +1,42 @@
+Index: .idea/mongoSettings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/mongoSettings.xml	(revision )
++++ .idea/mongoSettings.xml	(revision )
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MongoConfiguration">
++    <option name="serverConfigurations">
++      <list>
++        <ServerConfiguration>
++          <option name="serverName" value="localhost" />
++          <option name="serverPort" value="27017" />
++        </ServerConfiguration>
++      </list>
++    </option>
++    <option name="shellPath" value="C:\Program Files\MongoDB 2.6 Standard\bin\mongo.exe" />
++  </component>
++</project>
++
+Index: app/controllers/feed_controller.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/controllers/feed_controller.rb	(revision )
++++ app/controllers/feed_controller.rb	(revision )
+@@ -0,0 +1,11 @@
++class FeedController < ApplicationController
++  layout false
++
++  def index
++    @items = Release.sort(:last_name.desc).limit(10)
++    #render :rss => @items, :layout => false, :type => :builder
++    respond_to do |format|
++      format.rss { render :layout => false }
++    end
++  end
++end
